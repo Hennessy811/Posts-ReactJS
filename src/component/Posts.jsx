@@ -34,7 +34,7 @@ const PostsUsername = styled.div`
 
 export default function Posts({ users, posts }) {
 	const [ value, setvalue ] = React.useState('')
-	const result = posts.map((el) => {// Перекидываю name и username в массив posts
+	const result = posts.map((el) => {// Новый массив, который состоит из posts и  name и username из массива users
 		return {
 			...el,
 			name: users[el.userId - 1].name,
