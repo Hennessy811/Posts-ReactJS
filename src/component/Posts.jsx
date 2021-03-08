@@ -32,35 +32,35 @@ const PostsUsername = styled.div`
 	bottom: 25px;
 `
 
-
 export default function Posts({ users, posts }) {
 	const [ value, setvalue ] = React.useState('')
-	const result = posts.map((el) => {   // Перекидываю name и uername в массив posts
+	const result = posts.map((el) => {// Перекидываю name и username в массив posts
 		return {
 			...el,
 			name: users[el.userId - 1].name,
 			username: users[el.userId - 1].username
 		}
 	})
+
 	function handlerChangeInput(e) {
 		setvalue(e.target.value)
 	}
-	function filtersPosts(arr, value) { 
-		const resultFilters = []
+
+	function filtersPosts(arr, value) {
 		if (value === '') {
-			resultFilters.push(...arr)
+			return arr
 		} else {
-			arr.filter((el) => {
+			const resultFilters = arr.filter(el => {
 				const filterByUsername = el.username.toLowerCase().includes(value.toLowerCase())
-				const filterByName = el.username.toLowerCase().includes(value.toLowerCase())
+				const filterByName = el.name.toLowerCase().includes(value.toLowerCase())
 				const filterByBody = el.body.toLowerCase().includes(value.toLowerCase())
 				const filterByTitle = el.title.toLowerCase().includes(value.toLowerCase())
 				if (filterByUsername || filterByName || filterByBody || filterByTitle) {
-					resultFilters.push(el)
+					return el
 				}
 			})
+			return resultFilters
 		}
-		return resultFilters
 	}
 
 	const renderPosts = filtersPosts(result, value)
