@@ -77,7 +77,7 @@ export default function Posts({ users, posts }) {
 			<Container>
 				{renderPosts[0] ? (
 					renderPosts.map((el) => (
-						<Post>
+						<Post key={`${el.body}_${el.name}`}>
 							<div>
 								<h3>{el.title}</h3>
 								<div>{el.body}</div>

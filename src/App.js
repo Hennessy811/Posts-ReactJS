@@ -1,5 +1,5 @@
 import React from 'react'
-import Posts from './components/Posts'
+import Posts from './component/Posts'
 import styled from 'styled-components'
 
 const Container = styled.div`
